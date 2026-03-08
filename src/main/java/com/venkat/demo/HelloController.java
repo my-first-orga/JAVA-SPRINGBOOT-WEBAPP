@@ -8,6 +8,7 @@ public class HelloController {
 
     @GetMapping("/")
     public String home() {
+        return "Hii This Venkat! Welcome to AWS AND DEVOPS";
         return "Hello Venkat! Your CI/CD pipeline is working 🚀";
     }
 

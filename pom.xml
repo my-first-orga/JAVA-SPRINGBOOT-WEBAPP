@@ -21,6 +21,27 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
+    <servers>
+  <server>
+    <id>maven-repo-maven-code-build-repo</id>
+    <username>aws</username>
+    <password>${env.CODEARTIFACT_AUTH_TOKEN}</password>
+  </server>
+</servers>
+    <profiles>
+  <profile>
+    <id>maven-repo-maven-code-build-repo</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <repositories>
+      <repository>
+        <id>maven-repo-maven-code-build-repo</id>
+        <url>https://maven-repo-117327731569.d.codeartifact.us-east-1.amazonaws.com/maven/maven-code-build-repo/</url>
+      </repository>
+    </repositories>
+  </profile>
+</profiles>
       <distributionManagement>
 
         <repository>

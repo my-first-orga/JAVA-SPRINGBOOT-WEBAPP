@@ -1,5 +1,10 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+         https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
     <groupId>com.venkat</groupId>
     <artifactId>java-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -21,29 +26,8 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
     </dependencies>
-    <servers>
-  <server>
-    <id>maven-repo-maven-code-build-repo</id>
-    <username>aws</username>
-    <password>${env.CODEARTIFACT_AUTH_TOKEN}</password>
-  </server>
-</servers>
-    <profiles>
-  <profile>
-    <id>maven-repo-maven-code-build-repo</id>
-    <activation>
-      <activeByDefault>true</activeByDefault>
-    </activation>
-    <repositories>
-      <repository>
-        <id>maven-repo-maven-code-build-repo</id>
-        <url>https://maven-repo-117327731569.d.codeartifact.us-east-1.amazonaws.com/maven/maven-code-build-repo/</url>
-      </repository>
-    </repositories>
-  </profile>
-</profiles>
-      <distributionManagement>
 
+    <distributionManagement>
         <repository>
             <id>nexus</id>
             <url>http://15.207.20.25:8081/repository/release/</url>
@@ -53,8 +37,8 @@
             <id>nexus</id>
             <url>http://15.207.20.25:8081/repository/snapshot/</url>
         </snapshotRepository>
-
     </distributionManagement>
+
     <build>
         <plugins>
             <plugin>
@@ -63,4 +47,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

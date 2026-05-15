@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging into CodeArtifact
+      - aws codeartifact login --tool maven --domain mave-repo --domain-owner 117327731569 --repository maven-code-build-repo --region us-east-1
+
+  build:
+    commands:
+      - echo Building Spring Boot JAR
+      - mvn clean package
+
+artifacts:
+  files:
+    - target/*.jar

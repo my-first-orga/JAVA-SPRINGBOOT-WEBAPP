@@ -34,6 +34,9 @@ phases:
       - echo Uploading JAR to S3...
       - aws s3 cp target/*.jar s3://awzn-s3-codebuild-bkt/
 
+      - echo Pushing image to ECR...
+      - docker push 117327731569.dkr.ecr.us-east-1.amazonaws.com/image-repo:lates
+
 artifacts:
   files:
     - target/*.jar

@@ -16,9 +16,7 @@ phases:
       - mvn clean package
 
       - echo Running SonarQube analysis...
-      - mvn sonar:sonar \
-          -Dsonar.host.url=http://3.91.83.129:9000/ \
-          -Dsonar.login=squ_aae6d693b7cc8900595505d5d18c7f28880acd18
+      - mvn sonar:sonar -Dsonar.host.url=http://3.91.83.129:9000 -Dsonar.login=squ_aae6d693b7cc8900595505d5d18c7f28880acd18
 
 
   post_build:

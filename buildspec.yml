@@ -10,7 +10,7 @@ phases:
       - echo Build started on `date`
       - mvn --version
 
-      - echo Logging into ECR...
+      - echo Logging into ECR for Upload the image ... 
       - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 117327731569.dkr.ecr.us-east-1.amazonaws.com
 
 

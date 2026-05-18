@@ -19,9 +19,6 @@ phases:
       - echo Building JAR file...
       - mvn clean package
 
-      
-     
-
       - echo Building Docker image...
       - docker build -t image-repo:latest .
 

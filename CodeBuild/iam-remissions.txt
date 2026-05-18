@@ -1,0 +1,78 @@
+# This policy includes:
+1.CloudWatch Logs
+2.S3
+3.Secrets Manager
+4.CodeBuild Reports
+
+
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "CloudWatchLogs",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents"
+      ],
+      "Resource": [
+        "arn:aws:logs:us-east-1:117327731569:log-group:/aws/codebuild/java-webapp-pipeline",
+        "arn:aws:logs:us-east-1:117327731569:log-group:/aws/codebuild/java-webapp-pipeline:*"
+      ]
+    },
+    {
+      "Sid": "CodePipelineArtifacts",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:GetObjectVersion",
+        "s3:PutObject",
+        "s3:GetBucketAcl",
+        "s3:GetBucketLocation"
+      ],
+      "Resource": [
+        "arn:aws:s3:::codepipeline-us-east-1-*",
+        "arn:aws:s3:::codepipeline-us-east-1-*/*"
+      ]
+    },
+    {
+      "Sid": "CodeBuildArtifactBucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:ListBucket",
+        "s3:GetBucketLocation"
+      ],
+      "Resource": [
+        "arn:aws:s3:::awzn-s3-codebuild-bkt",
+        "arn:aws:s3:::awzn-s3-codebuild-bkt/*"
+      ]
+    },
+    {
+      "Sid": "SecretsManagerAccess",
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:GetSecretValue",
+        "secretsmanager:DescribeSecret"
+      ],
+      "Resource": "arn:aws:secretsmanager:us-east-1:117327731569:secret:*"
+    },
+    {
+      "Sid": "CodeBuildReports",
+      "Effect": "Allow",
+      "Action": [
+        "codebuild:CreateReportGroup",
+        "codebuild:CreateReport",
+        "codebuild:UpdateReport",
+        "codebuild:BatchPutTestCases",
+        "codebuild:BatchPutCodeCoverages"
+      ],
+      "Resource": [
+        "arn:aws:codebuild:us-east-1:117327731569:report-group/java-webapp-pipeline-*"
+      ]
+    }
+  ]
+}
